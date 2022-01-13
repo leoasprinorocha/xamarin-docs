@@ -96,8 +96,7 @@ For more information about the `DeviceInfo` class, see [Xamarin.Essentials: Devi
 Attempting to invoke a local secure web service from an application running in the iOS simulator or Android emulator will result in a `HttpRequestException` being thrown, even when using the managed network stack on each platform. This is because the local HTTPS development certificate is self-signed, and self-signed certificates aren't trusted by iOS or Android. Therefore, it's necessary to ignore SSL errors when an application consumes a local secure web service. This can be accomplished when using both the managed and native network stacks on iOS and Android, by setting the `ServerCertificateCustomValidationCallback` property on a `HttpClientHandler` object to a callback that ignores the result of the certificate security check for the local HTTPS development certificate:
 
 ```csharp
-// This method must be in a class in a platform project, even if
-// the HttpClient object is constructed in a shared project.
+
 public HttpClientHandler GetInsecureHandler()
 {
     HttpClientHandler handler = new HttpClientHandler();
